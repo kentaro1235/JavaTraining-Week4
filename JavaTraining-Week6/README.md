@@ -1,4 +1,4 @@
-# JavaTraining-Week5
+# JavaTraining-Week6
 
 ## プロジェクト概要
 Spring Boot の MVC 構成（Controller / Service / Repository）と Thymeleaf を用いて、  
