@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::main}, ${title})}">
+<body>
+<main>
+
+  <h2 th:text="${mode} == 'edit' ? 'タスク編集' : 'タスク新規作成'"></h2>
+
+  <form th:action="${mode} == 'edit' ? @{/tasks/{id}(id=${taskId})} : @{/tasks}"
+        method="post"
+        th:object="${form}"
+        style="margin-top:12px;">
+
+    <div>
+      <label>タイトル</label><br/>
+      <input type="text" th:field="*{title}" style="width: 320px; padding:6px;" />
+      <div th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}"
+           class="field-error"></div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <label>
+        <input type="checkbox" th:field="*{completed}" />
+        完了
+      </label>
+    </div>
+
+    <div style="margin-top:16px;">
+      <button class="btn" type="submit"
+              th:text="${mode} == 'edit' ? '更新' : '登録'"></button>
+      <a class="btn btn-nml" th:href="@{/tasks}">戻る</a>
+    </div>
+  </form>
+
+</main>
+</body>
+</html>
